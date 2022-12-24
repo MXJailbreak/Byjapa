@@ -1,0 +1,7 @@
+game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.Space, false, game)
+        spawn(function()
+            pcall(function()
+                repeat wait() until game.Players.LocalPlayer.Character.Humanoid.Jump == true
+                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.Space, false, game)
+            end)
+        end)
