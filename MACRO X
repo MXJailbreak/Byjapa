@@ -48,6 +48,26 @@ syn.request(
         })
     }
 )
+--Sistema
+
+local continuee = false
+local ids = loadstring(game:HttpGet("https://raw.githubusercontent.com/MXJailbreak/Byjapa/main/HWDI"))()
+
+for i,v in pairs(ids) do
+    if v == game:GetService("RbxAnalyticsService"):GetClientId() then 
+        continuee = true
+    end
+end
+
+if not continuee then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "HWID error";
+        Text = "HWID não registrada!"
+    })
+end
+
+repeat wait() until continuee 
+
 loadstring(game:HttpGet('https://raw.githubusercontent.com/japones10101940/MACRO-X---OFICIAL/main/MXV2'))()
 
 repeat wait() until getgenv().newtab
@@ -67,6 +87,34 @@ function Tp(Vector)
 	Tp1(Vector)
 end
 
+function getCamaro()
+    local vehicle, spec, nearest = nil, nil, math.huge
+    for i, v in next, require(game:GetService('ReplicatedStorage').Module.UI).CircleAction.Specs do
+    
+        if v.Name == "Enter Driver"  then
+            if v.ValidRoot.Name == "Camaro" or v.ValidRoot.Name == 'Jeep' then
+                local yourRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
+                local dist = (v.ValidRoot.PrimaryPart.Position - yourRoot.Position).Magnitude
+        
+                if dist < nearest then
+                    vehicle, spec, nearest = v.ValidRoot, v, dist
+                end
+            end
+        end
+    end
+    
+    if vehicle ~= nil then
+        return vehicle, spec, nearest
+    else
+        return nil
+    end
+end
+
+function EntrarNoCarroMaisProximo()
+    local carro, spec, nearest = getCamaro()
+
+    spec:Callback(true)
+end
 
 local Farm = Tab('Farm')
 
@@ -86,7 +134,13 @@ local Credits = Tab('Credits')
 Farm:CriarLabel('AUTO FARM:', true) --FARM
 
 Farm:CriarBotao("Auto Casino", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-73.93269348144531, 155.28050231933594, -4714.79833984375))
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/MXJailbreak/Byjapa/main/Carro'))()
     for i,v in pairs(workspace:GetDescendants()) do
         if v.Name == 'BarbedWire' or v.Name == 'Shadow' or v.Name == 'Lasers' or v.Name == 'LasersMoving' or v.Name == 'Shadow' or (v:IsA('Part') and tostring(v.BrickColor) == 'Dusty Rose') or (v.Name == 'InnerModel' and v.Parent.Name == 'Camera')  then
             local oldParent = v.Parent
@@ -231,7 +285,15 @@ Text = "Feito!";
 end)	
 
 Farm:CriarBotao("Auto Rosquinha", function()
-    Tp2(Vector3.new(93.25601959228516, 19.21782684326172, -1522.2998046875))
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+
+    end
+    Tp2(Vector3.new(93.25933837890625, 18.842592239379883, -1503.7281494140625))
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/MXJailbreak/Byjapa/main/Carro'))()
     wait(0.6)
     Tp1(Vector3.new(97.2082748413086, 19.517820358276367, -1530.1361083984375))
     wait(1)
@@ -257,7 +319,14 @@ Farm:CriarBotao("Auto Rosquinha", function()
 end)
 
 Farm:CriarBotao("Auto Posto de Gasolina", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
+    wait(0.6)
     Tp2(Vector3.new(-1571.728515625, 18.398113250732422, 708.75732421875))
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/MXJailbreak/Byjapa/main/Carro'))()
     wait()
     Tp1(Vector3.new(-1578.464599609375, 18.69811248779297, 706.9764404296875))
     wait(1)
@@ -284,6 +353,11 @@ Farm:CriarLabel('AUTO VENDER:', true)
 
 
 Farm:CriarBotao("Auto Vender (Vulcao)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(2277.160888671875, 18.90064239501953, -2055.906494140625))
     wait()
     Tp1(Vector3.new(2268.76513671875, 19.83126449584961, -2145.97802734375))
@@ -294,6 +368,11 @@ Farm:CriarBotao("Auto Vender (Vulcao)", function()
 end)
 
 Farm:CriarBotao("Auto Vender (Base Cidade)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-246.013916015625, 17.881628036499023, 1616.1649169921875))
 end)
 
@@ -343,15 +422,15 @@ end)
 
 Combat:CriarLabel('COMBAT:', true)
 
-Combat:CriarToggle('Aimbot', function()
+Combat:CriarBotao('Aimbot', function()
 
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Exunys/Aimbot-Script/main/Aimbot%20Script.lua'))()
 
 end)
 
-Combat:CriarToggle('Silent Aim', function()
+Combat:CriarToggle('Silent Aim', function(bool)
 
-    getgenv().toggled = true --/ true & false
+    getgenv().toggled = bool --/ true & false
 
 getgenv().old = getgenv().old or require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList
 
@@ -441,6 +520,11 @@ Teleportes:CriarLabel('TELEPORTES:', true)
 
 
 Teleportes:CriarBotao("TP Museu(Com Carro)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(1113.5445556640625, 139.10427856445312, 1297.2264404296875))
 end)
 
@@ -452,47 +536,102 @@ Teleportes:CriarBotao("TP Museu(Sem Carro)[SEM DELAY]", function()
 end)
 
 Teleportes:CriarBotao("TP Joaleria", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(143.66824340820312, 17.883831024169922, 1379.358154296875))
 end)	
 
 Teleportes:CriarBotao("TP Bank", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(43.04151153564453, 17.872217178344727, 764.78759765625))
 end)
 
 Teleportes:CriarBotao("TP Power Plant", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(46.77196502685547, 20.40790367126465, 2358.94482421875))
 end)	
 
 Teleportes:CriarBotao("TP Casino", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-194.64422607421875, 19.190465927124023, -4584.3720703125))
 end)	
 
 Teleportes:CriarBotao("TP Tomb", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(610.7174072265625, 21.32147979736328, -485.48687744140625))
 end)
 
 Teleportes:CriarBotao("TP Posto de Gasolina", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-1534.64453125, 18.461469650268555, 701.8700561523438))
 end)
 
 Teleportes:CriarBotao("TP Loja de Rosquinha", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(62.23844528198242, 18.963422775268555, -1517.5889892578125))
 end)	
 
 Teleportes:CriarBotao("TP Area 51", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(612.4613647460938, 19.61579132080078, -3616.880126953125))
 end)
 
 Teleportes:CriarBotao("TP Loja de Armas", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
 
 Tp2(Vector3.new(10.926280975341797, 19.758268356323242, -1764.260498046875))
 end)
 
 Teleportes:CriarBotao("TP Loja de 1M", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(479.4014587402344, 19.485206604003906, -1593.4052734375))
 end)
 
 Teleportes:CriarBotao("TP Vulcao(Dentro)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(2277.160888671875, 18.90064239501953, -2055.906494140625))
     wait(1.2)
     Tp1(Vector3.new(2270.21435546875, 19.57038688659668, -2155.13525390625))
@@ -502,22 +641,47 @@ Teleportes:CriarBotao("TP Vulcao(Dentro)", function()
 end)
 
 Teleportes:CriarBotao("TP Vulcao(Fora)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(2277.160888671875, 18.90064239501953, -2055.906494140625))
 end)	
 
 Teleportes:CriarBotao("TP Base Cidade", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-246.013916015625, 17.881628036499023, 1616.1649169921875))
 end)	
 
 Teleportes:CriarBotao("TP Prisao(Dentro)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-1219.6141357421875, 18.449987411499023, -1759.02490234375))
 end)
 
 Teleportes:CriarBotao("TP Prisao(Fora)", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(-1138.365234375, 18.39781951904297, -1389.2274169921875))
 end)
 
 Teleportes:CriarBotao("TP Mansion", function()
+    if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+        local carro, a, b = getCamaro()
+        Tp2(carro.Seat.Position)
+        EntrarNoCarroMaisProximo()
+    end
     Tp2(Vector3.new(2920.753662109375, 57.75913619995117, -4601.60009765625))
 end)
 
@@ -531,7 +695,33 @@ require(plrUtils).hasKey = function()
     return true
 end
 end)
+local armas = {}
+local args = {
 
+}
+for i,v in pairs(game:GetService("Workspace").Givers:GetChildren()) do
+    if v:FindFirstChild('Item') and v:FindFirstChild('ClickDetector') then
+        if not table.find(armas, v.Item.Value) then
+            armas[#armas + 1] = v.Item.Value
+            args[#args + 1] = {
+                v.Item.Value,
+                v.ClickDetector
+            }
+            if v.Item.Value == 'HatPolice' then
+                args[#args + 1] = {
+                    'Roupa normal',
+                    game:GetService("Workspace").ClothingRacks.ClothingRack.Hitbox.ClickDetector
+                }
+            end
+        end
+    end
+end
+Loja:CriarLabel("ARMAS:", true)
+for i,v in pairs(args) do
+    Loja:CriarBotao(v[1], function()
+        fireclickdetector(v[2])
+    end)
+end
 ESPS:CriarLabel('ESPS:', true)
 
 ESPS:CriarToggle('ESP Player', function()
@@ -584,14 +774,21 @@ end)
 Outros:CriarBotao('Abrir Porta (Casino)', function()
 
     local function code()
-    local code = ""
-    for i,v in pairs(game:GetService("Workspace").Casino.RobberyDoor.Codes:GetDescendants()) do
-        if v:IsA("TextLabel") and v.Text ~= "" then
-            code = code .. v.Text
+        local code = ""
+        for i,v in pairs(game:GetService("Workspace").Casino.RobberyDoor.Codes:GetDescendants()) do
+            if v:IsA("TextLabel") and v.Text ~= "" then
+                code = code .. v.Text
+            end
         end
+        return code
     end
-    return code
-    end
+    
+    game.StarterGui:SetCore('SendNotification', {
+        Title = 'Casino';
+        Text = 'Code: '..code();
+    })
+    workspace.Casino.RobberyDoor.Keypad.Pad.CasinoKeypadSubmit:FireServer(code())
+    
 end)
 
     Outros:CriarBotao('Auto Hack PC (CASINO)', function()
@@ -751,6 +948,142 @@ Player.Character.Humanoid:GetPropertyChangedSignal'WalkSpeed':Connect(function()
 Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
 Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
 end)
+end)
+
+Outros:CriarBotao('No Clip(Q)', function()
+    local NC = false
+    local NC_Clip
+    local Player = game.Players.LocalPlayer
+    local Char = Player.Character or Player.CharacterAdded:wait()
+    
+    local Mouse = Player:GetMouse()
+    
+    local Speed = 2
+    
+    local Service = game:GetService("ContextActionService")
+    local Camera = workspace.CurrentCamera
+    local Player = game:GetService("Players").LocalPlayer 
+    local Input = game:GetService("UserInputService") 
+    local Forward = false 
+    local Back = false 
+    local Left = false 
+    local Right = false 
+    local Up = false 
+    local Down = false 
+    local BodyPosition
+    local Menu
+    local Heart = {}
+    local VELOCIDADE = 5
+    
+    Player.Chatted:Connect(function(cmd)
+        cmd = cmd .. ' '
+        cmd = cmd:split(" ")
+        
+        if cmd[1] == "/e" then
+            if cmd[2] == "velo" then
+                VELOCIDADE = tonumber(cmd[3])
+            end
+        end
+    end)
+    Input.InputBegan:Connect(function(Key,b)if b then return end
+    if Key.KeyCode == Enum.KeyCode.LeftShift then
+        VELOCIDADE+=25
+    end
+        if Key.KeyCode == Enum.KeyCode.W or Key.KeyCode == Enum.KeyCode.Up then 
+            Forward = true 
+        end 
+        if Key.KeyCode == Enum.KeyCode.S or Key.KeyCode == Enum.KeyCode.Down then 
+            Back = true 
+        end 
+        if Key.KeyCode == Enum.KeyCode.A or Key.KeyCode == Enum.KeyCode.Left then
+            Left = true 
+        end 
+        if Key.KeyCode == Enum.KeyCode.D or Key.KeyCode == Enum.KeyCode.Right then 
+            Right = true 
+        end 
+        if Key.KeyCode == Enum.KeyCode.Space then 
+            Up = true 
+        end             
+        if Key.KeyCode == Enum.KeyCode.LeftControl then 
+            Down = true 
+        end 
+    end)
+    Input.InputEnded:Connect(function(Key, b)if b then return end
+    if Key.KeyCode == Enum.KeyCode.LeftShift then
+        VELOCIDADE-=25
+    end
+        if Key.KeyCode == Enum.KeyCode.W or Key.KeyCode == Enum.KeyCode.Up then 
+            Forward = false 
+        end 
+        if Key.KeyCode == Enum.KeyCode.S or Key.KeyCode == Enum.KeyCode.Down then 
+            Back = false 
+        end 
+        if Key.KeyCode == Enum.KeyCode.A or Key.KeyCode == Enum.KeyCode.Left then
+            Left = false 
+        end 
+        if Key.KeyCode == Enum.KeyCode.D or Key.KeyCode == Enum.KeyCode.Right then 
+            Right = false 
+        end 
+        if Key.KeyCode == Enum.KeyCode.Space then 
+            Up = false 
+        end 
+        if Key.KeyCode == Enum.KeyCode.LeftControl then 
+            Down = false 
+        end 
+    end)
+    Service:BindAction("To fly", function(name,state)
+        if state == Enum.UserInputState.Begin then
+            NC = not NC
+            
+            Char.Animate.Enabled = not NC
+            if NC then
+                spawn(function()
+                    
+                    NC_Clip = game:GetService("RunService").Stepped:Connect(function()
+                        for i,v in pairs(Char:GetDescendants()) do
+                            if v:IsA("BasePart") then
+                                v.CanCollide = false
+                            end
+                        end
+                    end)
+                    
+                end)
+                
+    
+                Heart[#Heart + 1] = game["Run Service"].Heartbeat:Connect(function()
+                    if Forward then 
+                        Player.Character:TranslateBy(Camera.CFrame.lookVector*VELOCIDADE) 
+                    end 
+                    if Back then 
+                        Player.Character:TranslateBy(-Camera.CFrame.lookVector*VELOCIDADE) 
+                    end 
+                    if Left then 
+                        Player.Character:TranslateBy(-Camera.CFrame:vectorToWorldSpace(Vector3.new(1,0,0))*VELOCIDADE) 
+                    end 
+                    if Right then 
+                        Player.Character:TranslateBy(Camera.CFrame:vectorToWorldSpace(Vector3.new(1,0,0))*VELOCIDADE) 
+                    end 
+                    if Up then Player.Character:TranslateBy(Camera.CFrame:vectorToWorldSpace(Vector3.new(0,1,0))*VELOCIDADE) 
+                    end 
+                    if Down then 
+                        Player.Character:TranslateBy(-Camera.CFrame:vectorToWorldSpace(Vector3.new(0,1,0))*VELOCIDADE) 
+                    end  
+                end)
+                spawn(function()
+                    while NC --[[Dont need "==true"]] do
+                    Char=game.Players.LocalPlayer.Character
+                        Char.HumanoidRootPart.Velocity = Vector3.new(0,1.5,0)
+                        task.wait()
+                    end
+                end)
+                
+            else
+                for i,v in pairs(Heart) do v:Disconnect() end
+            end
+            
+        end
+    end, false, Enum.KeyCode.Q)
+
 end)
 Outros:CriarBotao('FPS+', function()
 
