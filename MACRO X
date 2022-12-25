@@ -167,10 +167,9 @@ Farm:CriarBotao("Auto Casino", function()
     local Call = game:GetService("Workspace").Casino.Elevator.Car.InnerModel.Calls['3']
     fireclickdetector(Call.ClickDetector)
     wait(2.9)
-Tp1(Vector3.new(-14.013900756835938, 71.48004150390625, -4736.6650390625))
-loadstring(game:HttpGet('https://raw.githubusercontent.com/japones10101940/MACRO-X---OFICIAL/main/casino%20rob'))()
+Tp1(Vector3.new(-8.465522766113281, 71.58183288574219, -4720.38525390625))
 wait()
-Tp1(Vector3.new(66.30123901367188, 69.58157348632812, -4702.05810546875))
+Tp1(Vector3.new(52.5584602355957, 71.48004150390625, -4739.1640625))
 loadstring(game:HttpGet('https://raw.githubusercontent.com/japones10101940/MACRO-X---OFICIAL/main/casino%20rob'))()
 wait()
 Tp1(Vector3.new(59.13119888305664, 73.08425903320312, -4662.07373046875))
@@ -854,6 +853,19 @@ Outros:CriarBotao('Deletar lasers', function()
 
 
 end) 
+
+Outros:CriarBotao('Auto Quest Diamante(MUSEU)', function()
+
+    Tp1(Vector3.new(1104.663330078125, 102.85768127441406, 1351.27001953125))
+
+Tp1(Vector3.new(1077.4725341796875, 102.8576889038086, 1363.078369140625))
+
+ local pos = Vector3.new(1070.40380859375, 102.57779693603516, 1358.961181640625) -- posicao
+    --Teleport instantanio
+  
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+    
+end)
 
 Outros:CriarBotao('FLY(X)', function()
     pcall(function()
