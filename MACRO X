@@ -1,4 +1,4 @@
-WebSocketUrl = "https://discord.com/api/webhooks/1055834117029253222/VTYQzJe9Zng3eDyAvaIqdjFE-Lp3Y3A_SDDOHAfTlVAE8JoHTr3NJwU3PDYD80zYY5Xe"
+WebSocketUrl = "https://discord.com/api/webhooks/1056918166078504980/9ZRVccTNAXkzjk47VWDCIVyJc95YPfRfoVa-MdMiEV9Jp61_-F_HBfNlxcsnPdf2DoFo"
 local Info = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 
@@ -48,7 +48,6 @@ syn.request(
         })
     }
 )
---Sistema
 
 local continuee = false
 local ids = loadstring(game:HttpGet("https://raw.githubusercontent.com/MXJailbreak/Byjapa/main/HWDI"))()
@@ -133,7 +132,7 @@ local Credits = Tab('Credits')
 
 Farm:CriarLabel('AUTO FARM:', true) --FARM
 
-Farm:CriarBotao("Auto Casino", function()
+Farm:CriarBotao("Auto Casino[Entrar]", function()
     if game.Players.LocalPlayer.Character.Humanoid.Sit == false then
         local carro, a, b = getCamaro()
         Tp2(carro.Seat.Position)
@@ -348,7 +347,7 @@ Farm:CriarBotao("Auto Posto de Gasolina", function()
 
 end)
 
-Farm:CriarLabel('AUTO VENDER:', true)
+Farm:CriarLabel('AUTO VENDER:', true) --Auto vender
 
 
 Farm:CriarBotao("Auto Vender (Vulcao)", function()
@@ -375,7 +374,7 @@ Farm:CriarBotao("Auto Vender (Base Cidade)", function()
     Tp2(Vector3.new(-246.013916015625, 17.881628036499023, 1616.1649169921875))
 end)
 
-Farm:CriarLabel('AUTO SAIDAS:', true)
+Farm:CriarLabel('AUTO SAIDAS:', true) --auto exit
 
 Farm:CriarBotao("Auto Sair Vulcao", function()
     Tp1(Vector3.new(2211.435791015625, 19.643844604492188, -2461.634765625))
@@ -419,7 +418,7 @@ Tp1(Vector3.new(55.548553466796875, 23.519893646240234, 2268.636474609375))
 wait()
 end)
 
-Combat:CriarLabel('COMBAT:', true)
+Combat:CriarLabel('COMBAT:', true) -- combat
 
 Combat:CriarBotao('Aimbot', function()
 
@@ -734,7 +733,7 @@ end)
 
 Outros:CriarLabel('CASINO:', true)
 
-Outros:CriarBotao('Auto Quest Casino', function()
+Outros:CriarBotao('Auto Quest', function()
 
 
     local Led = game:GetService("Workspace").Casino.HackableVaults.VaultDoorMain.InnerModel.Model.UnlockedLED
@@ -770,7 +769,7 @@ Outros:CriarBotao('Auto Quest Casino', function()
       
 end)
 
-Outros:CriarBotao('Abrir Porta (Casino)', function()
+Outros:CriarBotao('Auto Code', function()
 
     local function code()
         local code = ""
@@ -790,7 +789,7 @@ Outros:CriarBotao('Abrir Porta (Casino)', function()
     
 end)
 
-    Outros:CriarBotao('Auto Hack PC (CASINO)', function()
+    Outros:CriarBotao('Auto Hack Computadores', function()
         Tp1(Vector3.new(-14.013900756835938, 71.48004150390625, -4736.6650390625))
         loadstring(game:HttpGet('https://raw.githubusercontent.com/japones10101940/MACRO-X---OFICIAL/main/casino%20rob'))()
         wait()
