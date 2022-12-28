@@ -1,3 +1,4 @@
+wait(0.9)
 local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
  
 game:GetService("RunService").Stepped:Connect(function()
@@ -67,7 +68,7 @@ function tp1(pos)
  
         game:GetService("TweenService"):Create(Body, TweenInfo.new(diff.Magnitude / speed, Enum.EasingStyle.Linear), {Position = pos}):Play()
         if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-            speed = 750
+            speed = 725
         else
             speed = 100
         end
