@@ -1,22 +1,4 @@
 
-local continuee = false
-local ids = loadstring(game:HttpGet("https://raw.githubusercontent.com/MXJailbreak/Byjapa/main/HWDI"))()
-
-for i,v in pairs(ids) do
-    if v == game:GetService("RbxAnalyticsService"):GetClientId() then 
-        continuee = true
-    end
-end
-
-if not continuee then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "HWID error";
-        Text = "HWID não registrada!"
-    })
-end
-
-repeat wait() until continuee 
-
 loadstring(game:HttpGet('https://raw.githubusercontent.com/japones10101940/MACRO-X---OFICIAL/main/MXV2'))()
 
 repeat wait() until getgenv().newtab
