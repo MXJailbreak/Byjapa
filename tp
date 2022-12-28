@@ -1,4 +1,4 @@
-wait(0.9)
+wait(1)
 local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
  
 game:GetService("RunService").Stepped:Connect(function()
